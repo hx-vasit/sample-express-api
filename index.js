@@ -10,7 +10,8 @@ app.use(cors());
 app.post("/verify", async (req, res) => {
   try {
     const secret = "secret";
-    const api = "http:/exmpale.com";
+    const api =
+      "https://6mosj0s8n4.execute-api.ap-southeast-1.amazonaws.com/dev/v1/enquque";
     const recaptchaResponse = await axios.post(
       `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${req.body._token}`
     );
@@ -21,7 +22,7 @@ app.post("/verify", async (req, res) => {
 
     const { data } = await axios.post(api, req.body);
 
-    res.send(data.test.sdfasfd);
+    res.send(data);
   } catch (e) {
     res.status(500).send(e);
   }
